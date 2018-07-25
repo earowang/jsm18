@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calendar-based graphics   for visualizing people’s daily schedules</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Earo Wang" />
+    <link href="index_files/remark-css/default.css" rel="stylesheet" />
+    <script src="index_files/htmlwidgets/htmlwidgets.js"></script>
+    <script src="index_files/jquery/jquery.min.js"></script>
+    <link href="index_files/leaflet/leaflet.css" rel="stylesheet" />
+    <script src="index_files/leaflet/leaflet.js"></script>
+    <link href="index_files/leafletfix/leafletfix.css" rel="stylesheet" />
+    <script src="index_files/Proj4Leaflet/proj4-compressed.js"></script>
+    <script src="index_files/Proj4Leaflet/proj4leaflet.js"></script>
+    <link href="index_files/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="index_files/leaflet-binding/leaflet.js"></script>
+    <script src="index_files/leaflet-providers/leaflet-providers.js"></script>
+    <script src="index_files/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
+    <link href="index_files/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="remark.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Calendar-based graphics <br> for visualizing people’s daily schedules
+### Earo Wang
+### 30 July 2018 <br> slides at <a href="http://slides.earo.me/jsm18" class="uri">http://slides.earo.me/jsm18</a>
+
+---
+
+
+
+
+
+
+class: center
+
+## .blue[Melbourne pedestrian counting sensors]
+
+.pull-left[
+<div id="htmlwidget-4362a5ebe1bc1d9b28fc" style="width:100%;height:612px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4362a5ebe1bc1d9b28fc">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Stamen.Watercolor",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-37.8172343724998,-37.8134944036338,-37.8188796214196,-37.8156418999105,-37.8084181419925,-37.8187424894411,-37.8136254240211,-37.8073006699971,-37.8016968046535,-37.8106437830727,-37.8198299169874,-37.8086954214778,-37.8157342252752,-37.806315806617,-37.8201124166947,-37.8153798501116,-37.8123967869915,-37.8123720170999,-37.8134486106919,-37.8183237506589,-37.8110152342489,-37.8116033115848,-37.8112184919515,-37.8201782771032,-37.8138066724228,-37.8024071877061,-37.806068879192,-37.8156498888822,-37.8145798719868,-37.8191170445268,-37.8124470265268,-37.8099934057793,-37.811729134669,-37.8240177591352,-37.8157374166874,-37.8040239999553,-37.8166863320591,-37.8141407401773,-37.8187647327542,-37.8165252682678,-37.7980819129784,-37.8212992424763,-37.8190925593958,-37.7969047300547,-37.8148325157834,-37.819658083823,-37.8178644478193,-37.8229354263742,-37.7984452524968,-37.8125215691035],[144.967150328493,144.965153237914,144.95449198131,144.965499000498,144.959063166657,144.967876562712,144.973235916778,144.959560550793,144.966589114895,144.964471322694,144.951025557542,144.960494038903,144.965210438559,144.958666979097,144.96291897546,144.974150495806,144.956526528442,144.965506710649,144.973053538633,144.971414820121,144.964294851728,144.962200774628,144.966568066001,144.965088773616,144.965167185971,144.961567307798,144.956446929732,144.939706947708,144.942923981029,144.965582558609,144.967787571661,144.972275879457,144.968246601442,144.956044263919,144.966857177706,144.963083999809,144.966897334535,144.9660937975,144.947105451213,144.961210625343,144.967210138302,144.968793093492,144.954527490176,144.964403781053,144.974540556573,144.968634533137,144.965068228214,144.947175106953,144.964117822271,144.961940101874],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#542788"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#542788"],"fillOpacity":0.7},null,null,null,null,["Flinders St-Swanston St (West)","Bourke Street Mall (North)","Spencer St-Collins St (North)","Collins Street (North)","QVM-Franklin St (North)","Princes Bridge","Collins Place (South)","QVM-Therry St (South)","Lygon St (West)","State Library","Southern Cross Station","QV Market-Elizabeth St (West)","Australia on Collins","QVM-Queen St (East)","Sandridge Bridge","Flinders St-Spark La","Flagstaff Station","Chinatown-Swanston St (North)","Collins Place (North)","Birrarung Marr","Melbourne Central","Melbourne Central-Elizabeth St (East)Melbourne Central-Elizabeth St (East)","Lonsdale St (South)","Southbank","Bourke Street Mall (South)","Pelham St (South)","QV Market-Peel St","Waterfront City","New Quay","Flinders Street Station Underpass","Bourke St-Russell St (West)","Lonsdale St-Spring St (West)","Chinatown-Lt Bourke St (South)","Melbourne Convention Exhibition Centre","City Square","Lincoln-Swanston (West)","Flinders La-Swanston St (West)","Little Collins St-Swanston St (East)","Victoria Point","Queen St (West)","Faraday St-Lygon St (West)","The Arts Centre","Spencer St-Collins St (South)","Tin Alley-Swanston St (West)","Flinders St-Spring St (West)","St Kilda Rd-Alexandra Gardens","Flinders St-Elizabeth St (East)","Webb Bridge","Monash Rd-Swanston St (West)","Elizabeth St-Lonsdale St (South)"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-37.8240177591352,-37.7969047300547],"lng":[144.939706947708,144.974540556573]}},"evals":[],"jsHooks":[]}</script>
+]
+.pull-right[
+&lt;img src="img/sensor.png" height="550px"&gt;
+]
+
+---
+
+.left-column[
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+## What is a typical working day like at Southern Cross Station?
+]
+.right-column[
+![](img/day1.gif)
+]
+
+---
+
+.left-column[
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+## More and more
+]
+.right-column[
+&lt;br&gt;
+&lt;video autoplay loop controls&gt;
+  &lt;source src="img/sx17.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+]
+
+---
+
+.left-column[
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+## Alternative display
+]
+.right-column[
+
+
+&lt;img src="figure/sx-wrap-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+background-image: url(img/calendar.png)
+background-size: 100% 100%
+
+---
+
+background-image: url(figure/sx-hol-1.svg)
+background-size: 100% 100%
+
+---
+
+# `sugrrants::frame_calendar()`
+
+.pull-left[
+&lt;br&gt;
+* It's not a plotting function, but provides a data-restructuring tool.
+
+
+* Its name draws inspiration from `tibble::frame_data()`, but the origin has shifted to `tibble::tribble()`.
+
+
+* It needs a better meaning: frame the series into the calendar canvas.
+]
+.pull-right[
+&lt;img src="figure/sx-oct-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+class: inverse middle center
+
+### Slides created via xaringan ⚔️ &lt;http://slides.earo.me/jsm18&gt;
+
+### Open source &lt;https://github.com/earowang/jsm18&gt;
+
+### This work is under licensed [<i class="fab  fa-creative-commons "></i> BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

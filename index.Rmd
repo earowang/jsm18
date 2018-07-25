@@ -1,0 +1,139 @@
+---
+title: "Calendar-based graphics <br> for visualizing people’s daily schedules"
+type: "contributed"
+author: "Earo Wang"
+date: "30 July 2018 <br> slides at <http://slides.earo.me/jsm18>"
+output:
+  xaringan::moon_reader:
+    css: ["default", "remark.css"]
+    self_contained: false
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r initial, echo = FALSE, cache = FALSE, results = 'hide'}
+library(knitr)
+options(htmltools.dir.version = FALSE, tibble.width = 60, tibble.print_min = 6)
+opts_chunk$set(
+  echo = FALSE, warning = FALSE, message = FALSE, comment = "#>",
+  fig.path = 'figure/', cache.path = 'cache/', fig.align = 'center', 
+  fig.width = 12, fig.height = 8.5, fig.show = 'hold', 
+  cache = TRUE, external = TRUE, dev = 'svglite'
+)
+read_chunk('R/theme.R')
+read_chunk('R/main.R')
+```
+
+```{r theme-remark}
+```
+
+class: center
+
+## .blue[Melbourne pedestrian counting sensors]
+
+.pull-left[
+```{r sensor-map, out.width = "100%"}
+```
+]
+.pull-right[
+<img src="img/sensor.png" height="550px">
+]
+
+---
+
+.left-column[
+<br>
+<br>
+<br>
+<br>
+<br>
+## What is a typical working day like at Southern Cross Station?
+]
+.right-column[
+![](img/day1.gif)
+]
+
+---
+
+.left-column[
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+## More and more
+]
+.right-column[
+<br>
+<video autoplay loop controls>
+  <source src="img/sx17.mp4" type="video/mp4">
+</video>
+]
+
+---
+
+.left-column[
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+## Alternative display
+]
+.right-column[
+```{r sx}
+```
+
+```{r sx-wrap, fig.height = 9}
+```
+]
+
+---
+
+background-image: url(img/calendar.png)
+background-size: 100% 100%
+
+---
+
+background-image: url(figure/sx-hol-1.svg)
+background-size: 100% 100%
+
+---
+
+# `sugrrants::frame_calendar()`
+
+.pull-left[
+<br>
+* It's not a plotting function, but provides a data-restructuring tool.
+
+
+* Its name draws inspiration from `tibble::frame_data()`, but the origin has shifted to `tibble::tribble()`.
+
+
+* It needs a better meaning: frame the series into the calendar canvas.
+]
+.pull-right[
+```{r sx-oct, fig.height = 12}
+```
+]
+
+---
+
+
+
+---
+
+class: inverse middle center
+
+### Slides created via xaringan `r emo::ji("crossed_swords")` <http://slides.earo.me/jsm18>
+
+### Open source <https://github.com/earowang/jsm18>
+
+### This work is under licensed [`r icon::fa("creative-commons")` BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
