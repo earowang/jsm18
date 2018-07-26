@@ -30,6 +30,9 @@ read_chunk('R/main.R')
 ```{r theme-remark}
 ```
 
+```{r load}
+```
+
 class: center
 
 ## .blue[Melbourne pedestrian counting sensors]
@@ -102,6 +105,10 @@ background-size: 100% 100%
 
 ---
 
+```{r sx-hol, include = FALSE}
+```
+
+
 background-image: url(figure/sx-hol-1.svg)
 background-size: 100% 100%
 
@@ -126,7 +133,115 @@ background-size: 100% 100%
 
 ---
 
+.left-column[
+## Easy to use
+### - `frame_calendar()`
+]
+.right-column[
+```{r sx-1, echo = TRUE}
+```
+]
 
+---
+
+.left-column[
+## Easy to use
+### - `frame_calendar()`
+### - ggplot2
+]
+.right-column[
+```{r sx-2b, eval = FALSE, echo = TRUE}
+```
+```{r sx-2, fig.height = 8}
+```
+]
+
+---
+
+.left-column[
+## Easy to use
+### - `frame_calendar()`
+### - ggplot2
+### - `prettify()`
+]
+.right-column[
+```{r sx-3, echo = TRUE, fig.height = 8}
+```
+]
+
+---
+
+.left-column[
+## Easy to use
+### - `frame_calendar()`
+### - ggplot2
+### - `prettify()`
+### - plotly
+]
+.right-column[
+```{r sx-plotly, eval = FALSE, echo = TRUE}
+```
+]
+
+---
+
+.left-column[
+## Easy to use
+### - `frame_calendar()`
+### - ggplot2
+### - `prettify()`
+### - plotly
+]
+.right-column[
+```{r sx-plotly}
+```
+]
+
+---
+
+## Options: calendar type
+
+.pull-left[
+`calendar = "weekly"`
+<br>
+<br>
+```{r weekly, fig.height = 10}
+```
+]
+.pull-right[
+`calendar = "daily"`
+<br>
+<br>
+```{r daily, fig.height = 10}
+```
+]
+
+---
+
+## Options: polar
+
+.pull-left[
+`polar = FALSE`
+<br>
+<br>
+```{r linear, fig.height = 10}
+```
+]
+.pull-right[
+`polar = TRUE`
+<br>
+<br>
+```{r polar, fig.height = 10}
+```
+]
+
+---
+
+## Multiple calendars
+
+---
+
+## Showcase
 
 ---
 

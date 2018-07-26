@@ -17,7 +17,8 @@ library(tidyverse)
 library(gganimate)
 
 ## ---- sx
-sx <- rwalkr::run_melb(year = 2017, sensor = "Southern Cross Station", tz = "Australia/Melbourne")
+sx <- rwalkr::run_melb(year = 2017, sensor = "Southern Cross Station", tz = "Australia/Melbourne") %>% 
+  select(-Sensor)
 time_breaks <- seq.int(0, 23, by = 4)
 
 ## ---- animate
@@ -120,10 +121,72 @@ p_sx <- sx_cal %>%
 prettify(p_sx)
 
 ## ---- sx-oct
-sx_oct <- sx %>% 
-  filter(Date < as.Date("2017-02-01")) %>% 
+sx_jan <- sx %>% 
+  filter(Date < as.Date("2017-02-01"))
+p_sx_jan <- sx_jan %>% 
   frame_calendar(x = Time, y = Count, date = Date) %>% 
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_line() +
   theme_remark()
-prettify(sx_oct, label = c("label", "text", "text2"))
+prettify(p_sx_jan, label = c("label", "text", "text2"))
+
+## ---- sx-1
+sx_cal <- sx %>% 
+  frame_calendar(x = Time, y = Count, date = Date)
+sx_cal
+
+## ---- sx-2
+p_sx <- sx_cal %>% 
+  ggplot(aes(.Time, .Count, group = Date)) +
+  geom_line() +
+  theme_remark()
+p_sx
+
+## ---- sx-2b
+p_sx <- ggplot(sx_cal, aes(.Time, .Count, group = Date)) +
+  geom_line()
+
+## ---- sx-3
+prettify(p_sx)
+
+## ---- sx-plotly
+library(plotly)
+pp_sx <- sx_cal %>% 
+  group_by(Date) %>% 
+  plot_ly(x = ~ .Time, y = ~ .Count) %>% 
+  add_lines()
+prettify(pp_sx)
+
+## ---- weekly
+sx13 <- sx %>% 
+  filter(Date < as.Date("2017-04-01"))
+p2 <- sx13 %>% 
+  frame_calendar(x = Time, y = Count, date = Date, calendar = "weekly") %>% 
+  ggplot(aes(.Time, .Count, group = Date)) +
+  geom_line() +
+  theme_remark()
+prettify(p2)
+
+## ---- daily
+p3 <- sx13 %>% 
+  frame_calendar(x = Time, y = Count, date = Date, calendar = "daily") %>% 
+  ggplot(aes(.Time, .Count, group = Date)) +
+  geom_line() +
+  theme_remark()
+prettify(p3)
+
+## ---- linear
+pl <- sx13 %>% 
+  frame_calendar(x = Time, y = Count, date = Date) %>% 
+  ggplot(aes(.Time, .Count, group = Date)) +
+  geom_line() +
+  theme_remark()
+prettify(pl)
+
+## ---- polar
+pp <- sx13 %>% 
+  frame_calendar(x = Time, y = Count, date = Date, polar = TRUE) %>% 
+  ggplot(aes(.Time, .Count, group = Date)) +
+  geom_path() +
+  theme_remark()
+prettify(pp)
