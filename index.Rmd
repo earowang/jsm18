@@ -2,7 +2,7 @@
 title: "Calendar-based graphics <br> for visualizing people’s daily schedules"
 type: "contributed"
 author: "Earo Wang"
-date: "30 July 2018 <br> slides at <http://slides.earo.me/jsm18>"
+date: "<br> 30 July 2018 <br> slides at <http://slides.earo.me/jsm18>"
 output:
   xaringan::moon_reader:
     css: ["default", "remark.css"]
@@ -100,6 +100,12 @@ class: center
 
 ---
 
+class: inverse middle
+
+### This page has been intentionally left blank.
+
+---
+
 background-image: url(img/calendar.png)
 background-size: 100% 100%
 
@@ -179,6 +185,10 @@ background-size: 100% 100%
 ### - plotly
 ]
 .right-column[
+<br>
+<br>
+<br>
+<br>
 ```{r sx-plotly, eval = FALSE, echo = TRUE}
 ```
 ]
@@ -239,16 +249,59 @@ background-size: 100% 100%
 
 ## Multiple calendars
 
+```{r multiple, fig.height = 6}
+```
+
 ---
 
 ## Showcase
+
+.pull-left[
+Energy consumption
+![elec](img/elec-consumption.png)
+]
+.pull-right[
+Bus delay
+<br>
+<br>
+<br>
+![bus](img/bus-delay.jpg)
+.red[.footnote[left: Roach, C (forthcoming 2018). Assessing the impact of building characteristics on energy consumption using semiparametric mixed models. <br> right: [Tom Elliott's tweet](https://twitter.com/tomelliottnz/status/958887861943640064)]]
+]
+
+---
+
+class: middle inverse
+
+### The full range of plotting capabilities in ggplot2 is essentially available, from geom_line() to geom_ribbon()
+
+--
+
+### Patterns on special events, like Australian Open, or Adele's concert, more easily pop out to the viewer as public holidays.
+
+--
+
+### Localize the calendar: other languages are supported for labels, like CJK.
+
+.pull-left[
+```{r chn}
+```
+]
+.pull-right[
+```{r fr}
+```
+]
 
 ---
 
 class: inverse middle center
 
+### Joint work with `r icon::fa_users()` [Di Cook](http://dicook.org) & [Rob J Hyndman](http://robjhyndman.com)
+
+### More on sugrrants `r icon::fa_info_circle()` <http://pkg.earo.me/sugrrants>
+
 ### Slides created via xaringan `r emo::ji("crossed_swords")` <http://slides.earo.me/jsm18>
 
-### Open source <https://github.com/earowang/jsm18>
+### Open source `r icon::fa_github()` [earowang/jsm18](https://github.com/earowang/jsm18)
 
 ### This work is under licensed [`r icon::fa("creative-commons")` BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).

@@ -128,7 +128,7 @@ p_sx_jan <- sx_jan %>%
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_line() +
   theme_remark()
-prettify(p_sx_jan, label = c("label", "text", "text2"))
+prettify(p_sx_jan, label = c("label", "text", "text2"), size = 7)
 
 ## ---- sx-1
 sx_cal <- sx %>% 
@@ -165,7 +165,7 @@ p2 <- sx13 %>%
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_line() +
   theme_remark()
-prettify(p2)
+prettify(p2, size = 7)
 
 ## ---- daily
 p3 <- sx13 %>% 
@@ -173,7 +173,7 @@ p3 <- sx13 %>%
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_line() +
   theme_remark()
-prettify(p3)
+prettify(p3, size = 7)
 
 ## ---- linear
 pl <- sx13 %>% 
@@ -181,7 +181,7 @@ pl <- sx13 %>%
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_line() +
   theme_remark()
-prettify(pl)
+prettify(pl, size = 7)
 
 ## ---- polar
 pp <- sx13 %>% 
@@ -189,4 +189,27 @@ pp <- sx13 %>%
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_path() +
   theme_remark()
-prettify(pp)
+prettify(pp, size = 7)
+
+## ---- multiple
+ped <- rwalkr::run_melb(
+  year = 2017, 
+  sensor = c("Southern Cross Station", "Birrarung Marr"), 
+  tz = "Australia/Melbourne"
+)
+
+p_m <- ped %>% 
+  group_by(Sensor) %>% 
+  frame_calendar(x = Time, y = Count, date = Date) %>% 
+  ggplot(aes(x = .Time, y = .Count, group = Date, colour = Sensor)) +
+  geom_line() +
+  facet_wrap(Sensor ~ .) +
+  scale_colour_brewer(palette = "Dark2") +
+  theme_remark()
+prettify(p_m, label.padding = unit(0.08, "lines"), size = 3)
+
+## ---- chn
+prettify(p_sx_jan, locale = "zh", family = "STKaiti", size = 7)
+
+## ---- fr
+prettify(p_sx_jan, locale = "fr", size = 7)
