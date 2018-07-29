@@ -100,9 +100,9 @@ class: center
 
 ---
 
-class: inverse middle
+class: inverse middle 
 
-### This page has been intentionally left blank.
+## `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("dancer")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")`
 
 ---
 
@@ -136,6 +136,56 @@ background-size: 100% 100%
 ```{r sx-oct, fig.height = 12}
 ```
 ]
+
+---
+
+## Construction
+
+.pull-left[
+<br>
+The grid position for any day in the month is given by
+
+$$\begin{align}
+i &= \lceil (g \mod 35) / 7\rceil \\ j &= g \mod 7.
+\end{align}$$
+
+Let $h$ and $c$ be the scaled hour and count, respectively, then the final
+coordinates are given by:
+
+$$\begin{align}
+x &= j + h \\ y &= i - c.
+\end{align}$$
+]
+.pull-right[
+<br>
+<br>
+<img src="img/month.png" width=500>
+]
+
+---
+
+## Map over each month
+
+```r
+mday_x <- mday(x)
+month_x <- unique(x - mday_x + 1)
+*if (sunday) { # Weekday starts with Sunday
+*  first_wday <- wday(month_x, week_start = 7) # k
+*} else { # starts with Monday
+*  first_wday <- wday(month_x, week_start = 1) # k
+*}
+counter <- map2( # g
+  .x = first_wday, .y = days_x, function(.x, .y) .x + 0:(.y - 1)
+)
+row_idx <- map( # i
+  counter, 
+  function(x) ifelse(x == ncells, max_wks, ceiling((x %% ncells) / ndays))
+)
+col_idx <- map( # j
+  counter, 
+  function(x) ifelse(x %% ndays == 0, ndays, x %% ndays)
+)
+```
 
 ---
 
@@ -277,7 +327,7 @@ class: middle inverse
 
 --
 
-### Patterns on special events, like Australian Open, or Adele's concert, more easily pop out to the viewer as public holidays.
+### Patterns on special events, like Australian Day, or Australian Open, more easily pop out to the viewer as public holidays.
 
 --
 

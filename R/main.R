@@ -15,9 +15,10 @@ gif2mp4 <- function(gif, path){
 ## ---- load
 library(tidyverse)
 library(gganimate)
+library(xkcd)
 
 ## ---- sx
-sx <- rwalkr::run_melb(year = 2017, sensor = "Southern Cross Station", tz = "Australia/Melbourne") %>% 
+sx <- rwalkr::run_melb(year = 2017, sensor = "Southern Cross Station", tz = "Australia/Melbourne") %>%
   select(-Sensor)
 time_breaks <- seq.int(0, 23, by = 4)
 
@@ -29,22 +30,58 @@ sx %>%
 jan9 <- sx %>%
   filter(Date == as.Date("2017-01-09"))
 
-jan9_animate <- map_dfr(tsibble::stretcher(jan9, .flatten = TRUE),
+jan9_animate <- map_dfr(tsibble::stretcher(jan9, .combine = TRUE),
   ~ mutate(., id = n())
 )
+xrange <- range(jan9_animate$Time)
+yrange <- range(jan9_animate$Count)
+ratioxy <- diff(xrange) / diff(yrange)
 
+mapping <- aes(
+  x=x,
+  y=y,
+  group = id,
+  scale=scale,
+  ratioxy=ratioxy,
+  angleofspine = angleofspine,
+  anglerighthumerus = anglerighthumerus,
+  anglelefthumerus = anglelefthumerus,
+  anglerightradius = anglerightradius,
+  angleleftradius = angleleftradius,
+  anglerightleg =  anglerightleg,
+  angleleftleg = angleleftleg,
+  angleofneck = angleofneck
+)
+
+dataman <- data.frame(
+  x= jan9$Time,
+  y= jan9$Count + 450,
+  id = 1:24,
+  scale = 200,
+  ratioxy = ratioxy,
+  angleofspine = -pi / 2,
+  anglerighthumerus = -pi / 6,
+  anglelefthumerus = pi + pi / 6,
+  anglerightradius = 0,
+  angleleftradius = -pi / 4,
+  angleleftleg = 3 * pi / 2  + pi / 12 ,
+  anglerightleg = 3 * pi / 2  - pi / 12,
+  angleofneck = 3 * pi / 2 - pi / 10
+  )
 p1 <- jan9_animate %>%
   ggplot(aes(x = Time, y = Count)) +
-  geom_line(aes(group = id), .size = 2) +
+  geom_line(aes(group = id), size = 2) +
   scale_x_continuous(
     breaks = time_breaks,
     label = time_breaks,
     limits = c(0, 23)
   ) +
+  xkcdman(mapping, dataman) +
   xlab("Time") +
   theme_remark() +
+  theme_xkcd() +
   transition_manual(id)
-animate(p1, 100, 2, width = 1000, height = 800)
+animate(p1, 100, 2, width = 1000, height = 700)
 
 rng_x1 <- range(jan9$Date_Time, na.rm = TRUE)
 rng_x2 <- range(
@@ -94,8 +131,8 @@ leaflet(sensor_loc) %>%
 
 ## ---- sx-wrap
 library(lubridate)
-sx %>% 
-  mutate(wday = wday(Date, label = TRUE, week_start = 1)) %>% 
+sx %>%
+  mutate(wday = wday(Date, label = TRUE, week_start = 1)) %>%
   ggplot(aes(x = Time, y = Count, group = Date)) +
   geom_line(alpha = 0.4) +
   facet_wrap(~ wday, ncol = 4) +
@@ -110,33 +147,33 @@ sx %>%
 ## ---- sx-hol
 library(sugrrants)
 library(tsibble)
-sx_cal <- sx %>% 
-  mutate(Holiday = if_else(Date %in% c(holiday_aus(2017)$date, as_date("2017-09-29")), 
-    TRUE, FALSE)) %>% 
+sx_cal <- sx %>%
+  mutate(Holiday = if_else(Date %in% c(holiday_aus(2017)$date, as_date("2017-09-29")),
+    TRUE, FALSE)) %>%
   frame_calendar(x = Time, y = Count, date = Date)
-p_sx <- sx_cal %>% 
+p_sx <- sx_cal %>%
   ggplot(aes(.Time, .Count, group = Date, colour = Holiday)) +
   geom_line() +
   theme_remark()
 prettify(p_sx)
 
 ## ---- sx-oct
-sx_jan <- sx %>% 
+sx_jan <- sx %>%
   filter(Date < as.Date("2017-02-01"))
-p_sx_jan <- sx_jan %>% 
-  frame_calendar(x = Time, y = Count, date = Date) %>% 
+p_sx_jan <- sx_jan %>%
+  frame_calendar(x = Time, y = Count, date = Date) %>%
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_line() +
   theme_remark()
 prettify(p_sx_jan, label = c("label", "text", "text2"), size = 7)
 
 ## ---- sx-1
-sx_cal <- sx %>% 
+sx_cal <- sx %>%
   frame_calendar(x = Time, y = Count, date = Date)
 sx_cal
 
 ## ---- sx-2
-p_sx <- sx_cal %>% 
+p_sx <- sx_cal %>%
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_line() +
   theme_remark()
@@ -151,41 +188,41 @@ prettify(p_sx)
 
 ## ---- sx-plotly
 library(plotly)
-pp_sx <- sx_cal %>% 
-  group_by(Date) %>% 
-  plot_ly(x = ~ .Time, y = ~ .Count) %>% 
+pp_sx <- sx_cal %>%
+  group_by(Date) %>%
+  plot_ly(x = ~ .Time, y = ~ .Count) %>%
   add_lines()
 prettify(pp_sx)
 
 ## ---- weekly
-sx13 <- sx %>% 
+sx13 <- sx %>%
   filter(Date < as.Date("2017-04-01"))
-p2 <- sx13 %>% 
-  frame_calendar(x = Time, y = Count, date = Date, calendar = "weekly") %>% 
+p2 <- sx13 %>%
+  frame_calendar(x = Time, y = Count, date = Date, calendar = "weekly") %>%
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_line() +
   theme_remark()
 prettify(p2, size = 7)
 
 ## ---- daily
-p3 <- sx13 %>% 
-  frame_calendar(x = Time, y = Count, date = Date, calendar = "daily") %>% 
+p3 <- sx13 %>%
+  frame_calendar(x = Time, y = Count, date = Date, calendar = "daily") %>%
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_line() +
   theme_remark()
 prettify(p3, size = 7)
 
 ## ---- linear
-pl <- sx13 %>% 
-  frame_calendar(x = Time, y = Count, date = Date) %>% 
+pl <- sx13 %>%
+  frame_calendar(x = Time, y = Count, date = Date) %>%
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_line() +
   theme_remark()
 prettify(pl, size = 7)
 
 ## ---- polar
-pp <- sx13 %>% 
-  frame_calendar(x = Time, y = Count, date = Date, polar = TRUE) %>% 
+pp <- sx13 %>%
+  frame_calendar(x = Time, y = Count, date = Date, polar = TRUE) %>%
   ggplot(aes(.Time, .Count, group = Date)) +
   geom_path() +
   theme_remark()
@@ -193,14 +230,14 @@ prettify(pp, size = 7)
 
 ## ---- multiple
 ped <- rwalkr::run_melb(
-  year = 2017, 
-  sensor = c("Southern Cross Station", "Birrarung Marr"), 
+  year = 2017,
+  sensor = c("Southern Cross Station", "Birrarung Marr"),
   tz = "Australia/Melbourne"
 )
 
-p_m <- ped %>% 
-  group_by(Sensor) %>% 
-  frame_calendar(x = Time, y = Count, date = Date) %>% 
+p_m <- ped %>%
+  group_by(Sensor) %>%
+  frame_calendar(x = Time, y = Count, date = Date) %>%
   ggplot(aes(x = .Time, y = .Count, group = Date, colour = Sensor)) +
   geom_line() +
   facet_wrap(Sensor ~ .) +
