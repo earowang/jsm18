@@ -39,7 +39,7 @@ class: center
 ```
 ]
 .pull-right[
-## .blue[Melbourne pedestrian counting sensors]
+## .blue[Melbourne <br> pedestrian counting sensors]
 <br>
 <img src="img/sensor.png" height="450px">
 ]
@@ -178,8 +178,8 @@ x &= j + h \\ y &= i - c.
 ## Map over each month
 
 ```r
-mday_x <- mday(x)
-month_x <- unique(x - mday_x + 1)
+*mday_x <- mday(x)
+*month_x <- unique(x - mday_x + 1)
 *if (sunday) { # Weekday starts with Sunday
 *  first_wday <- wday(month_x, week_start = 7) # k
 *} else { # starts with Monday

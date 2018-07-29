@@ -57,7 +57,7 @@ code {
   border-radius: 5px;
 }
 .remark-code, .remark-inline-code { font-family: 'Source Code Pro'; font-size: 90%; }
-/* .remark-code-line-highlighted     { background-color: #ffffb3; } */
+.remark-code-line-highlighted { background-color: #fee8c8; }
 .pull-left {
   float: left;
   width: 47%;
