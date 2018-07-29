@@ -1,34 +1,35 @@
-@import url('https://fonts.googleapis.com/css?family=Assistant:400,700');
-@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
+@import url(https://fonts.googleapis.com/css?family=Actor);
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600);
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
 body {
-  font-family: 'Assistant', sans-serif;
+  font-family: 'Actor', sans-serif;
 }
 h1, h2, h3 {
-  font-family: 'PT Sans Narrow', sans-serif;
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: 550;
   margin-bottom: 0;
 }
-.remark-slide-content h1 { font-size: 40px; }
-.remark-slide-content h2 { font-size: 38px; }
-.remark-slide-content h3 { font-size: 32px; }
+.remark-slide-content h1 { font-size: 3em; }
+.remark-slide-content h2 { font-size: 1.9em; }
+.remark-slide-content h3 { font-size: 1.5em; }
 .remark-slide-content {
   background-color: #fff;
   background-position: center;
   background-repeat: no-repeat;
   display: table-cell;
-  font-size: 26px;
-  padding: 0em 3.2em;
+  /* font-size: 26px; */
+  padding: 0em 1em;
 }
 .footnote {
   position: absolute;
-  bottom: 1em;
+  bottom: 3em;
   font-style: italic;
   font-size: 70%;
 }
-
-li { line-height: 1.65em; }
+li { line-height: 1.85em; }
 li p { line-height: 1.25em; }
 li {
   list-style-type: none;
@@ -44,29 +45,10 @@ ul li li:before {
   font-family: "FontAwesome";
   margin-right: 10px;
 }
-.x ul li:before {
-  content: "\f00d";
-  font-family: "FontAwesome";
-  color: #D00000;
-}
-.checked ul li:before {
-  content: "\f00c";
-  font-family: "FontAwesome";
-  color: #31a354;
-}
-
 .red { color: #D00000; }
 .orange { color: #FFBA08; }
 .blue { color: #3F88C5; }
-.large { font-size: 30px; }
-.center {
-  text-align: center;
-}
-.top {
-  position: absolute;
-  top: 5%;
-  right: 5%;
-}
+.large { font-size: 2em; }
 a, a > code {
   text-decoration: none;
 }
@@ -74,11 +56,8 @@ code {
   background: #f8f8f8;
   border-radius: 5px;
 }
-.remark-code, .remark-inline-code { font-family: 'Source Code Pro'; font-size: 70%; }
-.remark-code, .remark-code-line { font-family: 'Source Code Pro'; font-size: 88%; }
-.remark-code-line-highlighted {
-  background-color: #fee8c8;
-}
+.remark-code, .remark-inline-code { font-family: 'Source Code Pro'; font-size: 90%; }
+/* .remark-code-line-highlighted     { background-color: #ffffb3; } */
 .pull-left {
   float: left;
   width: 47%;
@@ -105,7 +84,7 @@ code {
 }
 .inverse h1, .inverse h2 {
   color: #FFBA08;
-  font-size: 62px;
+  font-size: 2.5em;
   line-height: 1.2em;
 }
 
@@ -124,7 +103,7 @@ code {
   margin-top: 0.2em;
 }
 #slide-how .slides .first, #slide-how .slides .second {
-  padding: 1px 20px;
+  padding: 1px 2px;
   height: 90px;
   width: 120px;
   -moz-box-shadow: 0 0 10px #777;
@@ -161,9 +140,8 @@ code {
 }
 
 .title-slide {
-  font-size: 32px;
+  font-size: 28px;
 }
-
 .title-slide .remark-slide-number {
   display: none;
 }
