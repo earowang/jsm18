@@ -158,11 +158,7 @@ background-size: 100% 100%
 
 ## Construction
 
-<<<<<<< HEAD
 .center[<img src="img/month.png" width=450>]
-=======
-.pull-left[
->>>>>>> cf12db07ee30f79e1342b930c6143ea0fbc1f81a
 <br>
 The grid position for any day in the month is given by
 
@@ -176,15 +172,6 @@ coordinates are given by:
 $$\begin{align}
 x &= j + h \\ y &= i - c.
 \end{align}$$
-<<<<<<< HEAD
-=======
-]
-.pull-right[
-<br>
-<br>
-<img src="img/month.png" width=500>
-]
->>>>>>> cf12db07ee30f79e1342b930c6143ea0fbc1f81a
 
 ---
 
@@ -209,19 +196,6 @@ col_idx <- map( # j
   counter, 
   function(x) ifelse(x %% ndays == 0, ndays, x %% ndays)
 )
-<<<<<<< HEAD
-=======
-```
-
----
-
-.left-column[
-## Easy to use
-### - `frame_calendar()`
-]
-.right-column[
-```{r sx-1, echo = TRUE}
->>>>>>> cf12db07ee30f79e1342b930c6143ea0fbc1f81a
 ```
 
 ---
