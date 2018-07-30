@@ -61,6 +61,11 @@ class: center
 ![](img/day1.gif)
 ]
 
+???
+
+* One normal working day in last Jan
+* 
+
 ---
 
 .left-column[
@@ -110,9 +115,9 @@ class: center
 
 ---
 
-class: inverse middle 
+class: inverse middle
 
-## `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("dancer")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")` `r emo::ji("walking_woman")`
+## <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-swimmer"></i>  <i class="fas fa-swimmer"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-swimmer"></i>  <i class="fas fa-swimmer"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>  <i class="fas fa-walking"></i>
 
 ---
 
@@ -345,7 +350,7 @@ class: inverse middle center
 
 ### More on sugrrants `r icon::fa_info_circle()` <http://pkg.earo.me/sugrrants>
 
-### Slides created via xaringan `r emo::ji("crossed_swords")` <http://slides.earo.me/jsm18>
+### Slides created via xaringan <i class="fas fa-user-ninja"></i> <http://slides.earo.me/jsm18>
 
 ### Open source `r icon::fa_github()` [earowang/jsm18](https://github.com/earowang/jsm18)
 

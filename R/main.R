@@ -14,7 +14,6 @@ gif2mp4 <- function(gif, path){
 
 ## ---- load
 library(tidyverse)
-library(gganimate)
 library(xkcd)
 
 ## ---- sx
@@ -23,6 +22,7 @@ sx <- rwalkr::run_melb(year = 2017, sensor = "Southern Cross Station", tz = "Aus
 time_breaks <- seq.int(0, 23, by = 4)
 
 ## ---- animate
+library(gganimate)
 sx %>%
   ggplot(aes(x = Date_Time, y = Count)) +
   geom_line()
