@@ -44,6 +44,13 @@ class: center
 <img src="img/sensor.png" height="450px">
 ]
 
+???
+
+* automated system to understand the walking activities in downtown Melbourne, primarily for business purpose.
+* put up 40+ sensors in the inner city, which covers shopping mall, train station, and outdoor park.
+* expect different pedestrian patterns at different locations.
+* a sensor either installed on the awing or street wall
+
 ---
 
 .left-column[
@@ -63,8 +70,9 @@ class: center
 
 ???
 
+* how the data looks like?
 * One normal working day in last Jan
-* 
+* expand time axis and put more and more data into this chart
 
 ---
 
